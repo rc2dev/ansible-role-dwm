@@ -1,0 +1,13 @@
+---
+- name: Clone networkmanager-dmenu repo
+  become: no
+  git:
+    repo: "{{ nmdmenu_repo_url }}"
+    dest: "{{ nmdmenu_repo_dir }}"
+
+- name: Link networkmanager-dmenu
+  become: no
+  copy:
+    src: "{{ nmdmenu_repo_dir }}/networkmanager_dmenu"
+    dest: "~/.local/bin/networkmanager_dmenu"
+    mode: 0755

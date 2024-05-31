@@ -1,0 +1,30 @@
+---
+# The github_release module needs github3.py python module
+- name: Install dependency for github_release
+  pip:
+    name: github3.py
+
+- name: Get latest release of nerd-fonts
+  community.general.github_release:
+    user: ryanoasis
+    repo: nerd-fonts
+    action: latest_release
+  register: nerd_latest
+
+- name: Ensure nerd-fonts directories exist
+  become: no
+  file:
+    path: "{{ nerd_dir }}/{{ item }}"
+    state: directory
+    mode: 0755
+  loop: "{{ nerd_names }}"
+
+- name: Extract archives
+  become: no
+  unarchive:
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nerd_latest.tag }}/{{ item }}.zip"
+    remote_src: yes
+    dest: "{{ nerd_dir }}/{{ item }}"
+    creates: "{{ nerd_dir }}/{{ item }}/readme.md"
+    mode: 0755
+  loop: "{{ nerd_names }}"

@@ -1,0 +1,24 @@
+---
+- name: Install nemo
+  package:
+    name: nemo
+
+- name: Install dconf-cli (needed by module on Debian)
+  apt:
+    name: dconf-cli
+
+- name: Install python dependency on virtualenv for dconf tasks
+  pip:
+    name: psutil
+
+- name: Hide desktop shorcut on Nemo's sidebar
+  community.general.dconf:
+    key: "/org/nemo/desktop/show-desktop-icons"
+    value: "false"
+    state: present
+
+- name: Configure nemo to use st as the terminal
+  community.general.dconf:
+    key: "/org/cinnamon/desktop/default-applications/terminal/exec"
+    value: "'st'"
+    state: present

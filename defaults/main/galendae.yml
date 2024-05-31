@@ -1,0 +1,13 @@
+---
+galendae_repo_dir: "~rafael/.local/src/galendae"
+
+galendae_repo_url: "https://github.com/chris-marsh/galendae"
+
+galendae_deps:
+  apt:
+    - libgtk-3-dev
+
+  # Fedora 37
+  dnf:
+    - gtk3-devel
+

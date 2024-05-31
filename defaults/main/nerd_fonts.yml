@@ -1,0 +1,6 @@
+---
+nerd_dir: "~/.local/share/fonts/nerd-fonts"
+
+nerd_names:
+  - IBMPlexMono
+  - Iosevka

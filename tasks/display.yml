@@ -1,0 +1,9 @@
+---
+- name: Configure display on xorg for xbacklight on x220+dwm
+  when: ansible_hostname == "x220"
+  copy:
+    src: display/30-display-x220.conf
+    dest: /etc/X11/xorg.conf.d/30-display-x220.conf
+    owner: root
+    group: root
+    mode: 0644

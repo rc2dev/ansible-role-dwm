@@ -1,0 +1,23 @@
+---
+dwm_pkgs:
+  - arandr  # Optional.
+  - blueman
+  - dunst
+  - flameshot
+  - fonts-ibm-plex
+  - gammastep
+  - geoclue-2.0  # For gammastep's geolocation.
+  - lxpolkit
+  - network-manager-gnome  # For nm-applet.
+  - papirus-icon-theme
+  - picom
+  - playerctl
+  - qgnomeplatform-qt5  # For QT_QPA_PLATFORMTHEME.
+  - rofi
+  - sxhkd
+  - x11-xserver-utils  # For xset, xsetroot.
+  - xbacklight  # Needed for keybinding on dwm after bios update.
+  - xsettingsd
+  - xss-lock
+  - xwallpaper
+

@@ -1,0 +1,23 @@
+---
+clipmenu_repos_dir: "~rafael/.local/src"
+
+clipmenu_repos_url: "https://github.com/cdown"
+
+clipmenu_repos:
+  - clipnotify
+  - clipmenu
+
+clipmenu_deps:
+  # Fedora 36
+  dnf:
+    - make
+    - gcc
+    - libXfixes-devel
+    - xsel
+
+  # Mint 20
+  apt:
+    - gcc
+    - libxfixes-dev
+    - make
+    - xsel

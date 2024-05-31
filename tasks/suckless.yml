@@ -1,0 +1,24 @@
+---
+- name: Install dependencies to compile suckless software
+  package:
+    pkg: "{{ suckless_deps[ansible_pkg_mgr] }}"
+
+- name: Clone suckless repos
+  become: no
+  git:
+    repo: "{{ suckless_repos_url }}/{{ item }}"
+    dest: "{{ suckless_repos_dir }}/{{ item }}"
+  loop: "{{ suckless_repos }}"
+
+- name: Compile suckless software
+  community.general.make:
+    chdir: "{{ suckless_repos_dir }}/{{ item }}"
+    target: install
+  loop: "{{ suckless_repos }}"
+
+- name: Create link for st (workaround for desktop files with terminal=true)
+  become: no
+  file:
+    src: /usr/local/bin/st
+    dest: ~/.local/bin/gnome-terminal
+    state: link

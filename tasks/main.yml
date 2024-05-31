@@ -1,0 +1,14 @@
+---
+# Install software for the environment
+- import_tasks: clipmenu.yml
+- import_tasks: galendae.yml
+- import_tasks: nerd_fonts.yml
+- import_tasks: nemo.yml
+- import_tasks: networkmanager_dmenu.yml
+- import_tasks: pkgs.yml
+
+# Config fixes
+- import_tasks: display.yml
+
+#  Install dwm and other suckless utilities
+- import_tasks: suckless.yml

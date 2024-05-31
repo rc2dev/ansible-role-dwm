@@ -1,0 +1,17 @@
+---
+- name: Install dependencies for clipmenu
+  package:
+    pkg: "{{ clipmenu_deps[ansible_pkg_mgr] }}"
+
+- name: Clone clipmenu repos
+  become: no
+  git:
+    repo: "{{ clipmenu_repos_url }}/{{ item }}"
+    dest: "{{ clipmenu_repos_dir }}/{{ item }}"
+  loop: "{{ clipmenu_repos }}"
+
+- name: Compile clipmenu
+  community.general.make:
+    chdir: "{{ clipmenu_repos_dir }}/{{ item }}"
+    target: install
+  loop: "{{ clipmenu_repos }}"

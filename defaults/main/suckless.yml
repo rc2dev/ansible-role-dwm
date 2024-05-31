@@ -1,0 +1,29 @@
+---
+suckless_repos_dir: "~rafael/.local/src"
+
+suckless_repos_url: "https://github.com/rc2dev"
+
+suckless_repos:
+  - suckless-dwm
+  - suckless-slock
+  - suckless-st
+
+suckless_deps:
+  # Fedora 36
+  dnf:
+    - make
+    - gcc
+    - libX11-devel
+    - libXft-devel
+    - libXinerama-devel
+    - libXrandr-devel
+
+  apt:
+    - libgd-dev
+    - libx11-dev
+    - libx11-xcb-dev
+    - libxcb-res0-dev
+    - libxext-dev
+    - libxft-dev
+    - libxinerama-dev
+    - libxrandr-dev

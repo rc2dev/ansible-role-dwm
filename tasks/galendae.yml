@@ -1,0 +1,23 @@
+---
+- name: Install dependencies for galendae
+  package:
+    pkg: "{{ galendae_deps[ansible_pkg_mgr] }}"
+
+- name: Clone galendae repo
+  become: no
+  git:
+    repo: "{{ galendae_repo_url }}"
+    dest: "{{ galendae_repo_dir }}"
+
+- name: Compile galendae
+  become: no
+  community.general.make:
+    chdir: "{{ galendae_repo_dir }}"
+    target: release
+
+- name: Install galendae binary
+  become: no
+  copy:
+    src: "{{ galendae_repo_dir }}/galendae"
+    dest: "~/.local/bin/galendae"
+    mode: 0755
